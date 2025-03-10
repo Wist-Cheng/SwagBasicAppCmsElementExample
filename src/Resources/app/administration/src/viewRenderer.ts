@@ -1,32 +1,22 @@
-import Vue from 'vue';
+import { createApp } from 'vue';
 import { location } from '@shopware-ag/meteor-admin-sdk';
+import SimpleTextFieldElement from './views/simple-textfield/simple-textfield-element';
+import SimpleTextFieldConfig from './views/simple-textfield/simple-textfield-config';
+import SimpleTextFieldPreview from './views/simple-textfield/simple-textfield-preview';
 
-// watch for height changes
 location.startAutoResizer();
 
-// start app views
-const app = new Vue({
-    el: '#app',
-    data() {
-        return { location };
-    },
+const app = createApp({
     components: {
-        'SwagDailymotionElement':
-            () => import('./views/swag-dailymotion/swag-dailymotion-element'),
-        'SwagDailymotionConfig':
-            () => import('./views/swag-dailymotion/swag-dailymotion-config'),
-        'SwagDailymotionPreview':
-            () => import('./views/swag-dailymotion/swag-dailymotion-preview'),
+        SimpleTextFieldElement,
+        SimpleTextFieldConfig,
+        SimpleTextFieldPreview
     },
     template: `
-        <SwagDailymotionElement
-            v-if="location.is('swag-dailymotion-element')"
-        ></SwagDailymotionElement>
-        <SwagDailymotionConfig
-            v-else-if="location.is('swag-dailymotion-config')"
-        ></SwagDailymotionConfig>
-        <SwagDailymotionPreview
-            v-else-if="location.is('swag-dailymotion-preview')"
-        ></SwagDailymotionPreview>
-    `,
+        <SimpleTextFieldElement v-if="location.is('simple-textfield-element')"/>
+        <SimpleTextFieldConfig v-else-if="location.is('simple-textfield-config')"/>
+        <SimpleTextFieldPreview v-else-if="location.is('simple-textfield-preview')"/>
+    `
 });
+
+app.mount('#app');

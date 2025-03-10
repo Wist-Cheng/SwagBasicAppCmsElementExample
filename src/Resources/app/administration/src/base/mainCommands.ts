@@ -1,6 +1,6 @@
-import { cms } from '@shopware-ag/meteor-admin-sdk';
+import {cms} from '@shopware-ag/meteor-admin-sdk';
 
-const CMS_ELEMENT_NAME = 'swag-dailymotion';
+const CMS_ELEMENT_NAME = 'simple-textfield';
 const CONSTANTS = {
     CMS_ELEMENT_NAME,
     PUBLISHING_KEY: `${CMS_ELEMENT_NAME}__config-element`,
@@ -8,9 +8,9 @@ const CONSTANTS = {
 
 void cms.registerCmsElement({
     name: CONSTANTS.CMS_ELEMENT_NAME,
-    label: 'Dailymotion video',
+    label: 'Einfaches Textfeld',
     defaultConfig: {
-        dailyUrl: {
+        textValue: {
             source: 'static',
             value: '',
         },

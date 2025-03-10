@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@shopware-ag/meteor-admin-sdk": "^5.7.7"
+  }
+}
